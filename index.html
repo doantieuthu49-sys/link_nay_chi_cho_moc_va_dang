@@ -3,170 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Space 💖</title>
+    <title>Mộc & Đăng 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pink-main: #ffb6bd;
-            --pink-light: #ffd7d5;
-            --yellow-light: #ffeeb6;
-            --blue-light: #afdcf1;
-            --text-color: #5a5a5a;
-            --bg-color: #fff9fa;
+            --pink-main: #ffb6bd; --pink-light: #ffd7d5; --yellow-light: #ffeeb6;
+            --blue-light: #afdcf1; --text-color: #5a5a5a; --bg-color: #fff9fa;
         }
-
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            text-align: center;
-            color: #d6336c;
-            margin-bottom: 20px;
-        }
-
-        .wave-divider {
-            width: 100%;
-            height: 50px;
-            background-image: radial-gradient(circle at 25px 0px, transparent 24px, var(--bg-color) 25px);
-            background-size: 50px 50px;
-            background-repeat: repeat-x;
-            transform: rotate(180deg);
-            margin-top: -50px;
-        }
-
-        .section-container {
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            border-radius: 30px;
-            background: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        #hero {
-            background-color: var(--pink-main);
-            text-align: center;
-            padding: 50px 20px;
-            position: relative;
-        }
-        #main-photo {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 8px solid white;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-        .upload-btn {
-            background: white;
-            color: var(--pink-main);
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: 'Quicksand', sans-serif;
-            margin-top: 15px;
-            display: inline-block;
-        }
-
+        body { font-family: 'Quicksand', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; overflow-x: hidden; }
+        h1, h2, h3 { text-align: center; color: #d6336c; margin-bottom: 20px; }
+        .section-container { padding: 40px 20px; max-width: 800px; margin: 0 auto 40px auto; border-radius: 30px; background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        #hero { background-color: var(--pink-main); text-align: center; padding: 50px 20px; }
+        #main-photo { width: 250px; height: 250px; object-fit: cover; border-radius: 50%; border: 8px solid white; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+        .upload-btn { background: white; color: var(--pink-main); padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; font-weight: bold; margin-top: 15px; display: inline-block; }
         #counter-section { background-color: var(--pink-light); }
-        .days-count {
-            font-size: 4em;
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 0px #d6336c;
-            text-align: center;
-        }
-
+        .days-count { font-size: 4em; font-weight: bold; color: white; text-shadow: 2px 2px 0px #d6336c; text-align: center; }
         #calendar-section { background-color: var(--yellow-light); }
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-            text-align: center;
-        }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; text-align: center; }
         .day-name { font-weight: bold; color: #d89f00; }
-        .day-box {
-            background: white;
-            padding: 15px 5px;
-            border-radius: 10px;
-            cursor: pointer;
-            position: relative;
-        }
-        .day-box:hover { background: var(--pink-light); color: white; }
-        .note-dot {
-            width: 8px;
-            height: 8px;
-            background: #d6336c;
-            border-radius: 50%;
-            margin: 5px auto 0;
-        }
-
+        .day-box { background: white; padding: 15px 5px; border-radius: 10px; cursor: pointer; position: relative; border: 1px solid #f0f0f0; }
+        .note-dot { width: 8px; height: 8px; background: #d6336c; border-radius: 50%; margin: 5px auto 0; }
         #lists-section { background-color: var(--blue-light); }
-        .form-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        input {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 15px;
-            font-family: inherit;
-        }
-        .add-btn {
-            background-color: var(--pink-main);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .form-group { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        input { flex: 1; padding: 12px; border: none; border-radius: 15px; outline: none; }
+        .add-btn { background-color: var(--pink-main); color: white; border: none; border-radius: 15px; padding: 10px 20px; cursor: pointer; font-weight: bold; }
         .list-items { list-style: none; padding: 0; }
-        .list-items li {
-            background: white;
-            margin-bottom: 15px;
-            padding: 15px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .item-img { width: 80px; height: 80px; object-fit: cover; border-radius: 10px; }
-        .item-info { flex: 1; }
-        .delete-btn { background: #ff4d4d; color: white; border: none; border-radius: 5px; cursor: pointer; padding: 5px 10px;}
-
-        #gallery-section { border: 5px dashed var(--pink-light); }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
+        .list-items li { background: white; margin-bottom: 15px; padding: 15px; border-radius: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 10px; }
+        .delete-btn { background: #ff4d4d; color: white; border: none; border-radius: 5px; cursor: pointer; padding: 5px 10px; margin-left: auto; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; margin-top: 20px; }
         .gallery-img { width: 100%; height: 120px; object-fit: cover; border-radius: 15px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div id="hero">
-        <img id="main-photo" src="https://via.placeholder.com/250/ffd7d5/ffffff?text=Mộc+&+Đăng" alt="Couple">
-        <br>
-        <label class="upload-btn">
-            Đổi Ảnh Bìa
-            <input type="file" style="display:none;" id="hero-upload" accept="image/*">
-        </label>
+        <img id="main-photo" src="https://via.placeholder.com/250/ffd7d5/ffffff?text=Couple" alt="Couple">
+        <br><label class="upload-btn">Đổi Ảnh Bìa <input type="file" id="hero-upload" hidden accept="image/*"></label>
     </div>
-    <div class="wave-divider"></div>
 
     <div class="section-container" id="counter-section">
         <h2>Tụi mình đã yêu nhau được...</h2>
@@ -185,30 +59,27 @@
     <div class="section-container" id="lists-section">
         <h2>🎁 Quà Muốn Nhận</h2>
         <div class="form-group">
-            <input type="text" id="gift-name" placeholder="Tên món quà...">
-            <input type="text" id="gift-link" placeholder="Link (nếu có)...">
-            <label class="add-btn" style="cursor:pointer">Up Hình <input type="file" id="gift-img" accept="image/*" style="display:none;"></label>
-            <button class="add-btn" onclick="window.addItem('gift')">Thêm</button>
+            <input type="text" id="gift-name" placeholder="Tên quà...">
+            <input type="text" id="gift-link" placeholder="Link...">
+            <label class="add-btn" style="cursor:pointer">Up Hình <input type="file" id="gift-img" hidden accept="image/*"></label>
+            <button class="add-btn" id="btn-gift">Thêm</button>
         </div>
         <ul class="list-items" id="gift-list"></ul>
 
         <h2 style="margin-top: 40px;">🍲 Món Muốn Ăn</h2>
         <div class="form-group">
-            <input type="text" id="food-name" placeholder="Tên món ăn...">
-            <input type="text" id="food-link" placeholder="Link quán...">
-            <label class="add-btn" style="cursor:pointer">Up Hình <input type="file" id="food-img" accept="image/*" style="display:none;"></label>
-            <button class="add-btn" onclick="window.addItem('food')">Thêm</button>
+            <input type="text" id="food-name" placeholder="Tên món...">
+            <input type="text" id="food-link" placeholder="Địa chỉ...">
+            <label class="add-btn" style="cursor:pointer">Up Hình <input type="file" id="food-img" hidden accept="image/*"></label>
+            <button class="add-btn" id="btn-food">Thêm</button>
         </div>
         <ul class="list-items" id="food-list"></ul>
     </div>
 
-    <div class="section-container" id="gallery-section">
+    <div class="section-container">
         <h2>📸 Album Kỷ Niệm</h2>
         <div style="text-align:center;">
-            <label class="upload-btn" style="background:var(--yellow-light); color:#d89f00;">
-                Tải Ảnh Lên Album
-                <input type="file" multiple id="gallery-upload" accept="image/*" style="display:none;">
-            </label>
+            <label class="upload-btn" style="background:var(--yellow-light); color:#d89f00;">Tải Ảnh Album <input type="file" id="gallery-upload" multiple hidden accept="image/*"></label>
         </div>
         <div class="gallery-grid" id="gallery-grid"></div>
     </div>
@@ -223,48 +94,94 @@
             projectId: "mocvadang",
             storageBucket: "mocvadang.firebasestorage.app",
             messagingSenderId: "840893882757",
-            appId: "1:840893882757:web:9e8bb38e98476c28f164ec",
-            measurementId: "G-2Q6Q75W093"
+            appId: "1:840893882757:web:9e8bb38e98476c28f164ec"
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // --- 1. HERO PHOTO ---
+        // --- HERO ---
         const heroRef = doc(db, "settings", "hero");
-        onSnapshot(heroRef, (d) => { if (d.exists()) document.getElementById('main-photo').src = d.data().url; });
-        document.getElementById('hero-upload').onchange = (e) => {
-            const r = new FileReader();
-            r.onload = async (ev) => { await setDoc(heroRef, { url: ev.target.result }); };
-            r.readAsDataURL(e.target.files[0]);
+        onSnapshot(heroRef, d => { if(d.exists()) document.getElementById('main-photo').src = d.data().url; });
+        document.getElementById('hero-upload').onchange = e => {
+            const r = new FileReader(); r.onload = async ev => await setDoc(heroRef, {url: ev.target.result}); r.readAsDataURL(e.target.files[0]);
         };
 
-        // --- 2. BỘ ĐẾM NGÀY ---
-        function calculateDays() {
-            const start = new Date('2025-10-04').getTime();
+        // --- COUNTER ---
+        const start = new Date('2025-10-04').getTime();
+        setInterval(() => {
             const now = new Date().getTime();
             const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24));
             document.getElementById('days-counter').innerText = (diff > 0 ? diff : 0) + " Ngày";
-        }
-        calculateDays();
-        setInterval(calculateDays, 1000 * 60 * 60);
+        }, 1000);
 
-        // --- 3. LỊCH (Realtime) ---
-        async function renderCalendar() {
+        // --- CALENDAR ---
+        const renderCal = () => {
             const calGrid = document.getElementById('calendar');
-            const date = new Date();
-            const year = date.getFullYear();
-            const month = date.getMonth();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const firstDay = new Date(year, month, 1).getDay();
-            
-            onSnapshot(collection(db, "calendar"), (snap) => {
-                const notes = {};
-                snap.forEach(d => { notes[d.id] = d.data().text; });
+            const date = new Date(); const days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+            const first = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+            onSnapshot(collection(db, "calendar"), snap => {
+                const notes = {}; snap.forEach(d => notes[d.id] = d.data().text);
                 while(calGrid.children.length > 7) calGrid.removeChild(calGrid.lastChild);
-                for(let i = 0; i < firstDay; i++) calGrid.innerHTML += `<div></div>`;
-                for(let i = 1; i <= daysInMonth; i++) {
-                    let key = `${year}-${month}-${i}`;
-                    const dayBox = document.createElement('div');
-                    dayBox.className = 'day-box';
-                    dayBox.innerHTML = `${i
+                for(let i=0; i<first; i++) calGrid.innerHTML += '<div></div>';
+                for(let i=1; i<=days; i++){
+                    const key = `${date.getFullYear()}-${date.getMonth()}-${i}`;
+                    const box = document.createElement('div'); box.className = 'day-box';
+                    box.innerHTML = `${i} ${notes[key] ? '<div class="note-dot"></div>' : ''}`;
+                    box.onclick = async () => {
+                        const n = prompt("Ghi chú ngày " + i, notes[key] || "");
+                        if(n !== null) n === "" ? await deleteDoc(doc(db, "calendar", key)) : await setDoc(doc(db, "calendar", key), {text: n});
+                    };
+                    calGrid.appendChild(box);
+                }
+            });
+        };
+        renderCal();
+
+        // --- LISTS ---
+        async function addItem(type) {
+            const name = document.getElementById(`${type}-name`).value;
+            const link = document.getElementById(`${type}-link`).value;
+            const file = document.getElementById(`${type}-img`).files[0];
+            if(!name) return;
+            const save = async (img = "") => {
+                await addDoc(collection(db, type), {name, link, img, time: Date.now()});
+                document.getElementById(`${type}-name`).value = ""; document.getElementById(`${type}-link`).value = "";
+            };
+            if(file){ const r = new FileReader(); r.onload = ev => save(ev.target.result); r.readAsDataURL(file); } else save();
+        }
+        document.getElementById('btn-gift').onclick = () => addItem('gift');
+        document.getElementById('btn-food').onclick = () => addItem('food');
+
+        const sync = (type) => {
+            onSnapshot(query(collection(db, type), orderBy("time", "desc")), snap => {
+                const ul = document.getElementById(`${type}-list`); ul.innerHTML = "";
+                snap.forEach(d => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${d.data().img ? `<img src="${d.data().img}" class="item-img">` : ''} 
+                    <div style="flex:1"><b>${d.data().name}</b><br><small>${d.data().link}</small></div>
+                    <button class="delete-btn" onclick="window.del('${type}','${d.id}')">Xóa</button>`;
+                    ul.appendChild(li);
+                });
+            });
+        };
+        sync('gift'); sync('food');
+        window.del = async (t, id) => { if(confirm("Xóa nhé?")) await deleteDoc(doc(db, t, id)); };
+
+        // --- GALLERY ---
+        document.getElementById('gallery-upload').onchange = e => {
+            Array.from(e.target.files).forEach(f => {
+                const r = new FileReader(); r.onload = async ev => await addDoc(collection(db, "gallery"), {url: ev.target.result, time: Date.now()}); r.readAsDataURL(f);
+            });
+        };
+        onSnapshot(query(collection(db, "gallery"), orderBy("time", "desc")), snap => {
+            const g = document.getElementById('gallery-grid'); g.innerHTML = "";
+            snap.forEach(d => {
+                const img = document.createElement('img'); img.className = "gallery-img"; img.src = d.data().url;
+                img.onclick = async () => { if(confirm("Xóa ảnh?")) await deleteDoc(doc(db, "gallery", d.id)); };
+                g.appendChild(img);
+            });
+        });
+    </script>
+</body>
+</html>
