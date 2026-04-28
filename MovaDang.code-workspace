@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "BT/My project (1)"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.asset": "yaml",
+			"*.meta": "yaml",
+			"*.prefab": "yaml",
+			"*.unity": "yaml"
+		}
+	}
+}
