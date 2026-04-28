@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Space </title>
+    <title>Our Love Space 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -30,7 +30,6 @@
             margin-bottom: 20px;
         }
 
-        /* Thiết kế lượn sóng phân cách các phần */
         .wave-divider {
             width: 100%;
             height: 50px;
@@ -44,13 +43,12 @@
         .section-container {
             padding: 40px 20px;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 40px auto;
             border-radius: 30px;
-            margin-bottom: 40px;
+            background: white;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        /* 1. Phần Ảnh Bìa */
         #hero {
             background-color: var(--pink-main);
             text-align: center;
@@ -78,10 +76,7 @@
             display: inline-block;
         }
 
-        /* 2. Bộ Đếm Ngày */
-        #counter-section {
-            background-color: var(--pink-light);
-        }
+        #counter-section { background-color: var(--pink-light); }
         .days-count {
             font-size: 4em;
             font-weight: bold;
@@ -90,10 +85,7 @@
             text-align: center;
         }
 
-        /* 3. Lịch */
-        #calendar-section {
-            background-color: var(--yellow-light);
-        }
+        #calendar-section { background-color: var(--yellow-light); }
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -107,7 +99,6 @@
             border-radius: 10px;
             cursor: pointer;
             position: relative;
-            transition: 0.2s;
         }
         .day-box:hover { background: var(--pink-light); color: white; }
         .note-dot {
@@ -118,17 +109,14 @@
             margin: 5px auto 0;
         }
 
-        /* 4. List Quà & Đồ ăn */
-        #lists-section {
-            background-color: var(--blue-light);
-        }
+        #lists-section { background-color: var(--blue-light); }
         .form-group {
             display: flex;
             gap: 10px;
             margin-bottom: 15px;
             flex-wrap: wrap;
         }
-        input[type="text"], input[type="url"] {
+        input {
             flex: 1;
             padding: 12px;
             border: none;
@@ -153,286 +141,82 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        .item-img {
-            width: 80px; height: 80px; object-fit: cover; border-radius: 10px;
-        }
+        .item-img { width: 80px; height: 80px; object-fit: cover; border-radius: 10px; }
         .item-info { flex: 1; }
-        .item-info a { color: var(--blue-light); font-weight: bold; text-decoration: none;}
         .delete-btn { background: #ff4d4d; color: white; border: none; border-radius: 5px; cursor: pointer; padding: 5px 10px;}
 
-        /* 5. Gallery */
-        #gallery-section {
-            background-color: white;
-            border: 5px dashed var(--pink-light);
-        }
+        #gallery-section { border: 5px dashed var(--pink-light); }
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
-        .gallery-img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
+        .gallery-img { width: 100%; height: 120px; object-fit: cover; border-radius: 15px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div id="hero">
-        <img id="main-photo" src="https://via.placeholder.com/250/ffd7d5/ffffff?text=Up+Ảnh+Hai+Đứa" alt="Ảnh cặp đôi">
+        <img id="main-photo" src="https://via.placeholder.com/250/ffd7d5/ffffff?text=Mộc+&+Đăng" alt="Couple">
         <br>
         <label class="upload-btn">
-            Tải Ảnh Lên
+            Đổi Ảnh Bìa
             <input type="file" style="display:none;" id="hero-upload" accept="image/*">
         </label>
     </div>
     <div class="wave-divider"></div>
 
     <div class="section-container" id="counter-section">
-        <h2> Tụi mình đã yêu nhau được...</h2>
+        <h2>Tụi mình đã yêu nhau được...</h2>
         <div class="days-count" id="days-counter">0 Ngày</div>
-        <p style="text-align:center; color:#d6336c;">Từ ngày 04/10/2025</p>
+        <p style="text-align:center; color:white;">Từ ngày 04/10/2025</p>
     </div>
 
     <div class="section-container" id="calendar-section">
-        <h2>📅 Lịch Kỷ Niệm (Tháng này)</h2>
-        <p style="text-align:center; font-size:0.9em; margin-top:-10px;">(Nhấn vào một ngày để thêm ghi chú)</p>
+        <h2>📅 Lịch Kỷ Niệm</h2>
         <div class="calendar-grid" id="calendar">
             <div class="day-name">CN</div><div class="day-name">T2</div><div class="day-name">T3</div>
             <div class="day-name">T4</div><div class="day-name">T5</div><div class="day-name">T6</div><div class="day-name">T7</div>
-            </div>
+        </div>
     </div>
 
     <div class="section-container" id="lists-section">
-        
-        <h2> Món Quà Muốn Nhận</h2>
+        <h2>🎁 Quà Muốn Nhận</h2>
         <div class="form-group">
             <input type="text" id="gift-name" placeholder="Tên món quà...">
-            <input type="url" id="gift-link" placeholder="Link (nếu có)...">
-            <label class="upload-btn" style="margin:0; font-size: 0.9em;">Up Hình <input type="file" id="gift-img" accept="image/*" style="display:none;"></label>
-            <button class="add-btn" onclick="addItem('gift')">Thêm</button>
+            <input type="text" id="gift-link" placeholder="Link (nếu có)...">
+            <label class="add-btn" style="cursor:pointer">Up Hình <input type="file" id="gift-img" accept="image/*" style="display:none;"></label>
+            <button class="add-btn" onclick="window.addItem('gift')">Thêm</button>
         </div>
         <ul class="list-items" id="gift-list"></ul>
 
-        <h2 style="margin-top: 40px;"> Món Ngon Muốn Ăn</h2>
+        <h2 style="margin-top: 40px;">🍲 Món Muốn Ăn</h2>
         <div class="form-group">
             <input type="text" id="food-name" placeholder="Tên món ăn...">
-            <input type="url" id="food-link" placeholder="Link quán (nếu có)...">
-            <label class="upload-btn" style="margin:0; font-size: 0.9em;">Up Hình <input type="file" id="food-img" accept="image/*" style="display:none;"></label>
-            <button class="add-btn" onclick="addItem('food')">Thêm</button>
+            <input type="text" id="food-link" placeholder="Link quán...">
+            <label class="add-btn" style="cursor:pointer">Up Hình <input type="file" id="food-img" accept="image/*" style="display:none;"></label>
+            <button class="add-btn" onclick="window.addItem('food')">Thêm</button>
         </div>
         <ul class="list-items" id="food-list"></ul>
     </div>
 
     <div class="section-container" id="gallery-section">
-        <h2> Gallery Kỷ Niệm</h2>
+        <h2>📸 Album Kỷ Niệm</h2>
         <div style="text-align:center;">
             <label class="upload-btn" style="background:var(--yellow-light); color:#d89f00;">
-                Thêm Ảnh Vào Album
+                Tải Ảnh Lên Album
                 <input type="file" multiple id="gallery-upload" accept="image/*" style="display:none;">
             </label>
         </div>
         <div class="gallery-grid" id="gallery-grid"></div>
     </div>
 
-    <script>
-        // --- 1. XỬ LÝ ẢNH BÌA ---
-        document.getElementById('hero-upload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if(file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    document.getElementById('main-photo').src = event.target.result;
-                    localStorage.setItem('heroImage', event.target.result);
-                }
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // --- 2. BỘ ĐẾM NGÀY ---
-        function calculateDays() {
-            const startDate = new Date('2025-10-04').getTime();
-            const today = new Date().getTime();
-            const diffTime = today - startDate;
-            
-            // Nếu ngày hiện tại chưa tới mốc 4/10/2025 thì hiển thị 0
-            if(diffTime < 0) {
-                document.getElementById('days-counter').innerText = "Sắp yêu nhau rồi!";
-            } else {
-                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                document.getElementById('days-counter').innerText = diffDays + " Ngày";
-            }
-        }
-
-        // --- 3. LỊCH THÁNG ---
-        function renderCalendar() {
-            const calGrid = document.getElementById('calendar');
-            const date = new Date();
-            const year = date.getFullYear();
-            const month = date.getMonth();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const firstDay = new Date(year, month, 1).getDay(); // 0 là Chủ nhật
-            
-            // Lấy ghi chú đã lưu
-            let notes = JSON.parse(localStorage.getItem('calNotes')) || {};
-
-            // Ô trống đầu tháng
-            for(let i = 0; i < firstDay; i++) {
-                calGrid.innerHTML += `<div></div>`;
-            }
-
-            // Điền ngày
-            for(let i = 1; i <= daysInMonth; i++) {
-                let key = `${year}-${month}-${i}`;
-                let hasNote = notes[key] ? `<div class="note-dot" title="${notes[key]}"></div>` : '';
-                
-                calGrid.innerHTML += `<div class="day-box" onclick="addNote('${key}', ${i})">${i} ${hasNote}</div>`;
-            }
-        }
-
-        function addNote(key, day) {
-            let notes = JSON.parse(localStorage.getItem('calNotes')) || {};
-            let currentNote = notes[key] || '';
-            let newNote = prompt(`Thêm ghi chú cho ngày ${day}:`, currentNote);
-            
-            if(newNote !== null) {
-                if(newNote.trim() === '') delete notes[key];
-                else notes[key] = newNote;
-                localStorage.setItem('calNotes', JSON.stringify(notes));
-                
-                // Cập nhật lại lịch
-                const calGrid = document.getElementById('calendar');
-                // Xóa hết ngày cũ (chừa lại 7 ô tên thứ)
-                while(calGrid.children.length > 7) calGrid.removeChild(calGrid.lastChild);
-                renderCalendar();
-            }
-        }
-
-        // --- 4. LIST QUÀ & ĐỒ ĂN ---
-        function addItem(type) {
-            let name = document.getElementById(`${type}-name`).value;
-            let link = document.getElementById(`${type}-link`).value;
-            let fileInput = document.getElementById(`${type}-img`);
-            let file = fileInput.files[0];
-
-            if(!name) { alert("Nhập tên món đi nè!"); return; }
-
-            let itemData = { id: Date.now(), name: name, link: link, image: '' };
-
-            if(file) {
-                let reader = new FileReader();
-                reader.onload = function(e) {
-                    itemData.image = e.target.result;
-                    saveAndRenderItem(type, itemData);
-                    fileInput.value = ''; // Reset input file
-                };
-                reader.readAsDataURL(file);
-            } else {
-                saveAndRenderItem(type, itemData);
-            }
-            
-            document.getElementById(`${type}-name`).value = '';
-            document.getElementById(`${type}-link`).value = '';
-        }
-
-        function saveAndRenderItem(type, itemData) {
-            try {
-                let list = JSON.parse(localStorage.getItem(`${type}List`)) || [];
-                list.push(itemData);
-                localStorage.setItem(`${type}List`, JSON.stringify(list));
-                renderList(type);
-            } catch (e) {
-                alert("Bộ nhớ đã đầy! Không thể lưu thêm ảnh bự nữa.");
-            }
-        }
-
-        function renderList(type) {
-            let list = JSON.parse(localStorage.getItem(`${type}List`)) || [];
-            let ul = document.getElementById(`${type}-list`);
-            ul.innerHTML = '';
-
-            list.forEach(item => {
-                let imgTag = item.image ? `<img src="${item.image}" class="item-img">` : '';
-                let linkTag = item.link ? `<a href="${item.link}" target="_blank">🔗 Xem chi tiết</a>` : '';
-                
-                ul.innerHTML += `
-                    <li>
-                        ${imgTag}
-                        <div class="item-info">
-                            <h3 style="margin:0; color:#5a5a5a; text-align:left;">${item.name}</h3>
-                            ${linkTag}
-                        </div>
-                        <button class="delete-btn" onclick="deleteItem('${type}', ${item.id})">Xóa</button>
-                    </li>
-                `;
-            });
-        }
-
-        function deleteItem(type, id) {
-            let list = JSON.parse(localStorage.getItem(`${type}List`)) || [];
-            list = list.filter(item => item.id !== id);
-            localStorage.setItem(`${type}List`, JSON.stringify(list));
-            renderList(type);
-        }
-
-        // --- 5. GALLERY ---
-        document.getElementById('gallery-upload').addEventListener('change', function(e) {
-            const files = e.target.files;
-            let gallery = JSON.parse(localStorage.getItem('galleryImgs')) || [];
-            
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    try {
-                        gallery.push(event.target.result);
-                        localStorage.setItem('galleryImgs', JSON.stringify(gallery));
-                        renderGallery();
-                    } catch (err) {
-                        alert("Bộ nhớ tải ảnh của trình duyệt đã đầy (Giới hạn 5MB).");
-                    }
-                }
-                reader.readAsDataURL(file);
-            });
-        });
-
-        function renderGallery() {
-            let gallery = JSON.parse(localStorage.getItem('galleryImgs')) || [];
-            let grid = document.getElementById('gallery-grid');
-            grid.innerHTML = '';
-            gallery.forEach(imgData => {
-                grid.innerHTML += `<img src="${imgData}" class="gallery-img">`;
-            });
-        }
-
-        // --- KHỞI CHẠY KHI MỞ TRANG ---
-        window.onload = function() {
-            // Load Hero Image
-            let savedHero = localStorage.getItem('heroImage');
-            if(savedHero) document.getElementById('main-photo').src = savedHero;
-            
-            calculateDays();
-            renderCalendar();
-            
-            // Render mẫu dữ liệu ban đầu nếu mảng trống
-            if(!localStorage.getItem('giftList')) {
-                localStorage.setItem('giftList', JSON.stringify([{id: 1, name: "Vé xem concert Soobin", link: "", image: ""}, {id: 2, name: "Một chiếc váy 2hand vintage", link: "", image: ""}]));
-            }
-            
-            renderList('gift');
-            renderList('food');
-            renderGallery();
-        };
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Cấu hình Firebase của bạn
         const firebaseConfig = {
             apiKey: "AIzaSyD4AFqaRBTafRMSU3V2JYXBzKcMZcolAik",
             authDomain: "mocvadang.firebaseapp.com",
@@ -443,47 +227,29 @@
             measurementId: "G-2Q6Q75W093"
         };
 
-        // Khởi tạo Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // --- 1. XỬ LÝ ẢNH BÌA (Realtime) ---
+        // --- 1. HERO PHOTO ---
         const heroRef = doc(db, "settings", "hero");
-        onSnapshot(heroRef, (doc) => {
-            if (doc.exists()) {
-                document.getElementById('main-photo').src = doc.data().url;
-            }
-        });
-
-        document.getElementById('hero-upload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if(file) {
-                const reader = new FileReader();
-                reader.onload = async function(event) {
-                    const base64 = event.target.result;
-                    await setDoc(heroRef, { url: base64 });
-                }
-                reader.readAsDataURL(file);
-            }
-        });
+        onSnapshot(heroRef, (d) => { if (d.exists()) document.getElementById('main-photo').src = d.data().url; });
+        document.getElementById('hero-upload').onchange = (e) => {
+            const r = new FileReader();
+            r.onload = async (ev) => { await setDoc(heroRef, { url: ev.target.result }); };
+            r.readAsDataURL(e.target.files[0]);
+        };
 
         // --- 2. BỘ ĐẾM NGÀY ---
         function calculateDays() {
-            const startDate = new Date('2025-10-04').getTime();
-            const today = new Date().getTime();
-            const diffTime = today - startDate;
-            const el = document.getElementById('days-counter');
-            if(diffTime < 0) {
-                el.innerText = "Sắp yêu nhau rồi!";
-            } else {
-                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                el.innerText = diffDays + " Ngày";
-            }
+            const start = new Date('2025-10-04').getTime();
+            const now = new Date().getTime();
+            const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+            document.getElementById('days-counter').innerText = (diff > 0 ? diff : 0) + " Ngày";
         }
         calculateDays();
-        setInterval(calculateDays, 1000 * 60 * 60); // Cập nhật mỗi tiếng
+        setInterval(calculateDays, 1000 * 60 * 60);
 
-        // --- 3. LỊCH THÁNG (Realtime) ---
+        // --- 3. LỊCH (Realtime) ---
         async function renderCalendar() {
             const calGrid = document.getElementById('calendar');
             const date = new Date();
@@ -492,123 +258,13 @@
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const firstDay = new Date(year, month, 1).getDay();
             
-            // Lắng nghe dữ liệu lịch từ Firebase
-            onSnapshot(collection(db, "calendar"), (snapshot) => {
+            onSnapshot(collection(db, "calendar"), (snap) => {
                 const notes = {};
-                snapshot.forEach(doc => { notes[doc.id] = doc.data().text; });
-
-                calGrid.innerHTML = `
-                    <div class="day-name">CN</div><div class="day-name">T2</div><div class="day-name">T3</div>
-                    <div class="day-name">T4</div><div class="day-name">T5</div><div class="day-name">T6</div><div class="day-name">T7</div>
-                `;
-
+                snap.forEach(d => { notes[d.id] = d.data().text; });
+                while(calGrid.children.length > 7) calGrid.removeChild(calGrid.lastChild);
                 for(let i = 0; i < firstDay; i++) calGrid.innerHTML += `<div></div>`;
-
                 for(let i = 1; i <= daysInMonth; i++) {
                     let key = `${year}-${month}-${i}`;
-                    let hasNote = notes[key] ? `<div class="note-dot" title="${notes[key]}"></div>` : '';
-                    
                     const dayBox = document.createElement('div');
                     dayBox.className = 'day-box';
-                    dayBox.innerHTML = `${i} ${hasNote}`;
-                    dayBox.onclick = () => addNote(key, i, notes[key] || '');
-                    calGrid.appendChild(dayBox);
-                }
-            });
-        }
-
-        async function addNote(key, day, currentNote) {
-            let newNote = prompt(`Ghi chú ngày ${day}:`, currentNote);
-            if(newNote !== null) {
-                if(newNote.trim() === '') await deleteDoc(doc(db, "calendar", key));
-                else await setDoc(doc(db, "calendar", key), { text: newNote });
-            }
-        }
-        renderCalendar();
-
-        // --- 4. LIST QUÀ & ĐỒ ĂN (Realtime) ---
-        window.addItem = async (type) => {
-            const name = document.getElementById(`${type}-name`).value;
-            const link = document.getElementById(`${type}-link`).value;
-            const fileInput = document.getElementById(`${type}-img`);
-            const file = fileInput.files[0];
-
-            if(!name) { alert("Nhập tên món đi nè!"); return; }
-
-            const itemData = { name, link, createdAt: Date.now() };
-
-            const saveToFirebase = async (data) => {
-                await addDoc(collection(db, type), data);
-                document.getElementById(`${type}-name`).value = '';
-                document.getElementById(`${type}-link`).value = '';
-                fileInput.value = '';
-            };
-
-            if(file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    itemData.image = e.target.result;
-                    saveToFirebase(itemData);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                saveToFirebase(itemData);
-            }
-        };
-
-        const listenList = (type) => {
-            const q = query(collection(db, type), orderBy("createdAt", "desc"));
-            onSnapshot(q, (snapshot) => {
-                const ul = document.getElementById(`${type}-list`);
-                ul.innerHTML = '';
-                snapshot.forEach((d) => {
-                    const item = d.data();
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        ${item.image ? `<img src="${item.image}" class="item-img">` : ''}
-                        <div class="item-info">
-                            <h3 style="margin:0; color:#5a5a5a;">${item.name}</h3>
-                            ${item.link ? `<a href="${item.link}" target="_blank">🔗 Xem chi tiết</a>` : ''}
-                        </div>
-                        <button class="delete-btn" onclick="deleteItem('${type}', '${d.id}')">Xóa</button>
-                    `;
-                    ul.appendChild(li);
-                });
-            });
-        };
-        listenList('gift'); listenList('food');
-
-        window.deleteItem = async (type, id) => {
-            if(confirm("Xóa món này nhé?")) await deleteDoc(doc(db, type, id));
-        };
-
-        // --- 5. GALLERY (Realtime) ---
-        document.getElementById('gallery-upload').addEventListener('change', function(e) {
-            Array.from(e.target.files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = async (event) => {
-                    await addDoc(collection(db, "gallery"), {
-                        url: event.target.result,
-                        createdAt: Date.now()
-                    });
-                }
-                reader.readAsDataURL(file);
-            });
-        });
-
-        onSnapshot(query(collection(db, "gallery"), orderBy("createdAt", "desc")), (snapshot) => {
-            const grid = document.getElementById('gallery-grid');
-            grid.innerHTML = '';
-            snapshot.forEach(d => {
-                const img = document.createElement('img');
-                img.className = 'gallery-img';
-                img.src = d.data().url;
-                img.onclick = async () => {
-                    if(confirm("Xóa ảnh này khỏi album?")) await deleteDoc(doc(db, "gallery", d.id));
-                };
-                grid.appendChild(img);
-            });
-        });
-    </script>
-</body>
-</html>
+                    dayBox.innerHTML = `${i
