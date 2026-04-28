@@ -428,6 +428,187 @@
             renderList('food');
             renderGallery();
         };
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Cấu hình Firebase của bạn
+        const firebaseConfig = {
+            apiKey: "AIzaSyD4AFqaRBTafRMSU3V2JYXBzKcMZcolAik",
+            authDomain: "mocvadang.firebaseapp.com",
+            projectId: "mocvadang",
+            storageBucket: "mocvadang.firebasestorage.app",
+            messagingSenderId: "840893882757",
+            appId: "1:840893882757:web:9e8bb38e98476c28f164ec",
+            measurementId: "G-2Q6Q75W093"
+        };
+
+        // Khởi tạo Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // --- 1. XỬ LÝ ẢNH BÌA (Realtime) ---
+        const heroRef = doc(db, "settings", "hero");
+        onSnapshot(heroRef, (doc) => {
+            if (doc.exists()) {
+                document.getElementById('main-photo').src = doc.data().url;
+            }
+        });
+
+        document.getElementById('hero-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = async function(event) {
+                    const base64 = event.target.result;
+                    await setDoc(heroRef, { url: base64 });
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // --- 2. BỘ ĐẾM NGÀY ---
+        function calculateDays() {
+            const startDate = new Date('2025-10-04').getTime();
+            const today = new Date().getTime();
+            const diffTime = today - startDate;
+            const el = document.getElementById('days-counter');
+            if(diffTime < 0) {
+                el.innerText = "Sắp yêu nhau rồi!";
+            } else {
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                el.innerText = diffDays + " Ngày";
+            }
+        }
+        calculateDays();
+        setInterval(calculateDays, 1000 * 60 * 60); // Cập nhật mỗi tiếng
+
+        // --- 3. LỊCH THÁNG (Realtime) ---
+        async function renderCalendar() {
+            const calGrid = document.getElementById('calendar');
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const firstDay = new Date(year, month, 1).getDay();
+            
+            // Lắng nghe dữ liệu lịch từ Firebase
+            onSnapshot(collection(db, "calendar"), (snapshot) => {
+                const notes = {};
+                snapshot.forEach(doc => { notes[doc.id] = doc.data().text; });
+
+                calGrid.innerHTML = `
+                    <div class="day-name">CN</div><div class="day-name">T2</div><div class="day-name">T3</div>
+                    <div class="day-name">T4</div><div class="day-name">T5</div><div class="day-name">T6</div><div class="day-name">T7</div>
+                `;
+
+                for(let i = 0; i < firstDay; i++) calGrid.innerHTML += `<div></div>`;
+
+                for(let i = 1; i <= daysInMonth; i++) {
+                    let key = `${year}-${month}-${i}`;
+                    let hasNote = notes[key] ? `<div class="note-dot" title="${notes[key]}"></div>` : '';
+                    
+                    const dayBox = document.createElement('div');
+                    dayBox.className = 'day-box';
+                    dayBox.innerHTML = `${i} ${hasNote}`;
+                    dayBox.onclick = () => addNote(key, i, notes[key] || '');
+                    calGrid.appendChild(dayBox);
+                }
+            });
+        }
+
+        async function addNote(key, day, currentNote) {
+            let newNote = prompt(`Ghi chú ngày ${day}:`, currentNote);
+            if(newNote !== null) {
+                if(newNote.trim() === '') await deleteDoc(doc(db, "calendar", key));
+                else await setDoc(doc(db, "calendar", key), { text: newNote });
+            }
+        }
+        renderCalendar();
+
+        // --- 4. LIST QUÀ & ĐỒ ĂN (Realtime) ---
+        window.addItem = async (type) => {
+            const name = document.getElementById(`${type}-name`).value;
+            const link = document.getElementById(`${type}-link`).value;
+            const fileInput = document.getElementById(`${type}-img`);
+            const file = fileInput.files[0];
+
+            if(!name) { alert("Nhập tên món đi nè!"); return; }
+
+            const itemData = { name, link, createdAt: Date.now() };
+
+            const saveToFirebase = async (data) => {
+                await addDoc(collection(db, type), data);
+                document.getElementById(`${type}-name`).value = '';
+                document.getElementById(`${type}-link`).value = '';
+                fileInput.value = '';
+            };
+
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    itemData.image = e.target.result;
+                    saveToFirebase(itemData);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                saveToFirebase(itemData);
+            }
+        };
+
+        const listenList = (type) => {
+            const q = query(collection(db, type), orderBy("createdAt", "desc"));
+            onSnapshot(q, (snapshot) => {
+                const ul = document.getElementById(`${type}-list`);
+                ul.innerHTML = '';
+                snapshot.forEach((d) => {
+                    const item = d.data();
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        ${item.image ? `<img src="${item.image}" class="item-img">` : ''}
+                        <div class="item-info">
+                            <h3 style="margin:0; color:#5a5a5a;">${item.name}</h3>
+                            ${item.link ? `<a href="${item.link}" target="_blank">🔗 Xem chi tiết</a>` : ''}
+                        </div>
+                        <button class="delete-btn" onclick="deleteItem('${type}', '${d.id}')">Xóa</button>
+                    `;
+                    ul.appendChild(li);
+                });
+            });
+        };
+        listenList('gift'); listenList('food');
+
+        window.deleteItem = async (type, id) => {
+            if(confirm("Xóa món này nhé?")) await deleteDoc(doc(db, type, id));
+        };
+
+        // --- 5. GALLERY (Realtime) ---
+        document.getElementById('gallery-upload').addEventListener('change', function(e) {
+            Array.from(e.target.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = async (event) => {
+                    await addDoc(collection(db, "gallery"), {
+                        url: event.target.result,
+                        createdAt: Date.now()
+                    });
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+
+        onSnapshot(query(collection(db, "gallery"), orderBy("createdAt", "desc")), (snapshot) => {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = '';
+            snapshot.forEach(d => {
+                const img = document.createElement('img');
+                img.className = 'gallery-img';
+                img.src = d.data().url;
+                img.onclick = async () => {
+                    if(confirm("Xóa ảnh này khỏi album?")) await deleteDoc(doc(db, "gallery", d.id));
+                };
+                grid.appendChild(img);
+            });
+        });
     </script>
 </body>
 </html>
